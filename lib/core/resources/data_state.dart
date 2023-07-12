@@ -4,13 +4,16 @@ abstract class DataState<T> {
   final T? data;
   final DioException? error;
 
-  DataState(this.data, this.error);
+  DataState({
+    this.data,
+    this.error,
+  });
 }
 
 class DataSuccess<T> extends DataState<T> {
-  DataSuccess(super.data, super.error);
+  DataSuccess(T data) : super(data: data);
 }
 
 class DataFailed<T> extends DataState<T> {
-  DataFailed(super.data, super.error);
+  DataFailed(DioException error) : super(error: error);
 }
